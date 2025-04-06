@@ -37,13 +37,25 @@ function numberPress(num) {
 }
 
 function operationPress(oper) {
-  if (oper != '=') {
+  if (oper !== '=') {
     const opers = ['+', '-', '*', '/', '.'];
-  
-    if (opers.includes(display.value.slice(-1))) display.value = display.value.slice(0, -1) + oper;
-    else display.value += oper;
+
+    if (opers.includes(display.value.slice(-1)) && oper !== '-') {
+      display.value = display.value.slice(0, -1) + oper;
+    }
+
+    else if (oper === '-' && (display.value === '' || opers.includes(display.value.slice(-1)))) {
+      display.value += oper;  
+    } else {
+      display.value += oper; 
+    }
   } else {
-    display.value = eval(display.value);
+
+    try {
+      display.value = eval(display.value);
+    } catch (e) {
+      display.value = "Error"; 
+    }
   }
 }
 
