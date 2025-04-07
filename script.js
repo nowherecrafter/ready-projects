@@ -1,27 +1,26 @@
-let numbers = document.querySelectorAll('.number');
-let operators = document.querySelectorAll('.operator');
-let dot = document.getElementById('decimal');
-let clearBtns = document.querySelectorAll('.clear-btn');
-let equals = document.getElementById('result');
-
-let display = document.getElementById('display');
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const dot = document.getElementById('decimal');
+const clearBtns = document.querySelectorAll('.clear-btn');
+const equals = document.getElementById('result');
+const display = document.getElementById('display');
 
 for (let i = 0; i < numbers.length; i++) {
-  let num = numbers[i];
+  const num = numbers[i];
   num.addEventListener('click', function (e) {
     numberPress(e.target.textContent);
   });
 }
 
 for (let i = 0; i < clearBtns.length; i++) {
-  let cBtn = clearBtns[i];
+  const cBtn = clearBtns[i];
   cBtn.addEventListener('click', function (e) {
     clearPress(e.target.id);
   });
 }
 
 for (let i = 0; i < operators.length; i++) {
-  let oper = operators[i];
+  const oper = operators[i];
   oper.addEventListener('click', function (e) {
     operationPress(e.target.textContent);
   });
@@ -30,7 +29,6 @@ for (let i = 0; i < operators.length; i++) {
 dot.addEventListener('click', dotPress);
 
 function numberPress(num) {  
-  console.log("number");
   if (display.value === '0') display.value = num;
   else display.value += num;
 
